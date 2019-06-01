@@ -7,6 +7,7 @@ Team 5 - "A Team" Members
 - Alain Lafume
 - Zey Win 
 
+[Download the BestLife apk](https://drive.google.com/open?id=1p6MMasrUmPMDISzOST1lhzkPj22Nd36Q)
 
 ## Screenshots
 
