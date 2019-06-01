@@ -1,4 +1,4 @@
-package com.jli.bestlife
+package com.jli.bestlife.api
 
 
 interface ApiConfig {

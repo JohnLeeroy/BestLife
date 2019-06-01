@@ -1,6 +1,7 @@
 package com.jli.bestlife.main
 
 import android.os.Bundle
+import com.jli.bestlife.BestLifeApp
 import com.jli.bestlife.R
 import com.jli.bestlife.mvp.BaseMVPActivity
 import org.ups.greensky.mvp.PresenterProvider
@@ -13,10 +14,7 @@ class MainActivity : BaseMVPActivity<MainView, MainPresenter>() {
     }
 
     override val presenterProvider: PresenterProvider<MainView, MainPresenter>
-        get() = object : PresenterProvider<MainView, MainPresenter>() {
-            override fun provide(): MainPresenter {
-                return MainPresenter()
-            }
-        }
+        get() = MainPresenterFactory((application as BestLifeApp).kodein)
+
 
 }

@@ -1,6 +1,7 @@
 package com.jli.bestlife
 
 import android.app.Application
+import com.jli.bestlife.api.ApiConfig
 import com.jli.bestlife.di.DiConfigurator
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
