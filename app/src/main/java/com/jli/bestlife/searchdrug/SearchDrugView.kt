@@ -1,15 +1,11 @@
 package com.jli.bestlife.searchdrug
 
 import com.jli.bestlife.mvp.BaseView
-import io.reactivex.Observable
+import com.jli.bestlife.searchdrug.recycler.SearchDrugAdapter
 
 interface SearchDrugView : BaseView {
 
-//    fun showNoResultsMessage(message: String)
-//
-//    fun hideNoResultsMessage()
-//
-//    fun getSearchActionEvent(): Observable<RxSearchView.RxSearchActionEvent>
-
     fun goToMedicationForm()
+
+    fun setAdapter(adapter: SearchDrugAdapter)
 }

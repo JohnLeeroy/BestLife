@@ -9,14 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jli.bestlife.R
 import com.jli.bestlife.medical.AddMedicationFormActivity
 import com.jli.bestlife.mvp.BaseMVPActivity
-import com.jli.bestlife.searchdrug.recycler.MedicationAdapter
+import com.jli.bestlife.searchdrug.recycler.SearchDrugAdapter
 import org.ups.greensky.mvp.PresenterProvider
-import timber.log.Timber
 
 class SearchDrugActivity : BaseMVPActivity<SearchDrugView, SearchDrugPresenter>(), SearchDrugView {
 
     private lateinit var recyclerView: RecyclerView
-    val adapter = MedicationAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +22,10 @@ class SearchDrugActivity : BaseMVPActivity<SearchDrugView, SearchDrugPresenter>(
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         recyclerView = findViewById(R.id.search_result_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    override fun setAdapter(adapter: SearchDrugAdapter) {
         recyclerView.adapter = adapter
-
-        adapter.getInputObservable()
-            .subscribe({
-                goToMedicationForm()
-            }, Timber::d)
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
