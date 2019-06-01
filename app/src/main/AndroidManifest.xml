@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.jli.bestlife">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
             android:name=".BestLifeApp"
@@ -13,10 +13,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity">
+
+        <activity
+                android:name=".medical.MedicationDetailActivity"
+                android:label="Medication Detail"/>
+        <activity
+                android:name=".medical.AddMedicationFormActivity"
+                android:label="Add Medication"/>
+        <activity
+                android:name=".searchdrug.SearchDrugActivity"
+                android:label="Search"/>
+        <activity
+                android:name=".main.MainActivity"
+                android:label="BestLife">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>

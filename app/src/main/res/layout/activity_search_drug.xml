@@ -4,11 +4,12 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.MainActivity">
+        tools:context=".searchdrug.SearchDrugActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/medication_recycler_view"
+            android:id="@+id/search_result_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

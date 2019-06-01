@@ -27,6 +27,5 @@ class BestLifeApp : Application(), KodeinAware {
 
     private fun configureDi(): Kodein {
         return DiConfigurator().configureDi(this, getApiConfig())
-
     }
 }
