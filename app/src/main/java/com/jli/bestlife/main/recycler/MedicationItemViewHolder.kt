@@ -13,7 +13,7 @@ class MedicationItemViewHolder(itemView: View) : BaseViewHolder<MedicationItem, 
 
     override fun bind(model: MedicationItem) {
         super.bind(model)
-        drugLabel.text = model.name
+        drugLabel.text = model.drug.brandName
     }
 
     override fun getInputObservable(): Observable<MedicationSelectedEvent> {

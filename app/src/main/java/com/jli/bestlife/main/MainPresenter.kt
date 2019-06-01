@@ -11,17 +11,10 @@ class MainPresenter(private val drugApi: DrugApiContract) : BasePresenter<MainVi
     lateinit var adapter: MedicationAdapter
 
     override fun onAttach() {
-//        drugApi.searchDrugLabel("benadryl")
-//            .subscribeOn(Schedulers.newThread())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({
-//                Timber.d(it.toString())
-//            }, Timber::d)
-//
         adapter = MedicationAdapter()
         view?.setupAdapter(adapter)
-        adapter.getInputObservable()
-            .subscribe({ view?.openMedicationDetailView(MedicationItem("")) }, Timber::d)
+//        adapter.getInputObservable()
+//            .subscribe({ view?.openMedicationDetailView(MedicationItem()) }, Timber::d)
     }
 
     override fun onDetach() {

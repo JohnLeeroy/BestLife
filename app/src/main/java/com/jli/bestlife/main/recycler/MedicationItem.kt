@@ -1,3 +1,5 @@
 package com.jli.bestlife.searchdrug.recycler
 
-data class MedicationItem(val name : String)
+import com.jli.bestlife.domain.Drug
+
+data class MedicationItem(val drug: Drug)

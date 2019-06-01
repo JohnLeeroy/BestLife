@@ -16,16 +16,20 @@
 
         <activity
                 android:name=".medication.MedicationDetailActivity"
-                android:label="Medication Detail"/>
+                android:label="Medication Detail"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".medication.AddMedicationFormActivity"
-                android:label="Add Medication"/>
+                android:label="Add Medication"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".searchdrug.SearchDrugActivity"
-                android:label="Search"/>
+                android:label="Search"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".main.MainActivity"
-                android:label="BestLife">
+                android:label="BestLife"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

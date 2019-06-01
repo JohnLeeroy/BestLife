@@ -1,20 +1,25 @@
 package com.jli.bestlife.searchdrug
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jli.bestlife.BestLifeApp
 import com.jli.bestlife.R
+import com.jli.bestlife.domain.Drug
 import com.jli.bestlife.medication.AddMedicationFormActivity
 import com.jli.bestlife.mvp.BaseMVPActivity
 import com.jli.bestlife.searchdrug.recycler.SearchDrugAdapter
+import io.reactivex.Observable
 import org.ups.greensky.mvp.PresenterProvider
+
 
 class SearchDrugActivity : BaseMVPActivity<SearchDrugView, SearchDrugPresenter>(), SearchDrugView {
 
     private lateinit var recyclerView: RecyclerView
+    private lateinit var searchView : SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +40,20 @@ class SearchDrugActivity : BaseMVPActivity<SearchDrugView, SearchDrugPresenter>(
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.search_menu, menu)
+        searchView = menu.findItem(R.id.search).actionView as SearchView
         return true
     }
 
     override val presenterProvider: PresenterProvider<SearchDrugView, SearchDrugPresenter>
-        get() = SearchDrugPresenterFactory()
+        get() = SearchDrugPresenterFactory((application as BestLifeApp).kodein)
 
-    override fun goToMedicationForm() {
-        val intent = Intent(this, AddMedicationFormActivity::class.java)
-        startActivity(intent)
+    override fun goToMedicationForm(drug: Drug) {
+        AddMedicationFormActivity.start(this, drug)
     }
 
+    override fun getSearchViewActions(): Observable<RxSearchView.RxSearchActionEvent> {
+        return RxSearchView.onQueryActions(searchView)
+    }
 }

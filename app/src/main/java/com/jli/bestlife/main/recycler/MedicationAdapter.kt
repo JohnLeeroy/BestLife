@@ -20,7 +20,7 @@ class MedicationAdapter : BaseAdapter<MedicationItem, MedicationSelectedEvent, M
     }
 
     override fun onBindViewHolder(holder: MedicationItemViewHolder, position: Int) {
-        holder.bind(MedicationItem("Medication 1"))
+//        holder.bind(MedicationItem("Medication 1"))
     }
 
     override fun addOrUpdateItems(items: List<MedicationItem>) {
