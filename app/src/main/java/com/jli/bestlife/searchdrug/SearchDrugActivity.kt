@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jli.bestlife.R
-import com.jli.bestlife.medical.AddMedicationFormActivity
+import com.jli.bestlife.medication.AddMedicationFormActivity
 import com.jli.bestlife.mvp.BaseMVPActivity
 import com.jli.bestlife.searchdrug.recycler.SearchDrugAdapter
 import org.ups.greensky.mvp.PresenterProvider

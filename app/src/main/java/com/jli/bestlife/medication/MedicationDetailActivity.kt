@@ -1,15 +1,15 @@
-package com.jli.bestlife.medical
+package com.jli.bestlife.medication
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.jli.bestlife.R
 
-class AddMedicationFormActivity : AppCompatActivity() {
+class MedicationDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_medication_form)
+        setContentView(R.layout.activity_medication_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -19,5 +19,4 @@ class AddMedicationFormActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 }

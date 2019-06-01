@@ -15,10 +15,10 @@
             android:theme="@style/AppTheme">
 
         <activity
-                android:name=".medical.MedicationDetailActivity"
+                android:name=".medication.MedicationDetailActivity"
                 android:label="Medication Detail"/>
         <activity
-                android:name=".medical.AddMedicationFormActivity"
+                android:name=".medication.AddMedicationFormActivity"
                 android:label="Add Medication"/>
         <activity
                 android:name=".searchdrug.SearchDrugActivity"
