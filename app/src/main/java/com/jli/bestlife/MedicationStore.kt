@@ -12,9 +12,7 @@ class MedicationStore constructor(val sharedPreferences: SharedPreferences) {
     private var userMedicationList = mutableListOf<UserMedication>()
 
     init {
-        val listType = object : TypeToken<List<UserMedication>>() { }.type
-        val json = sharedPreferences.getString(storeKey, "[]")
-        userMedicationList = gson.fromJson(json, listType)
+        loadMedicationList()
     }
 
     fun addMedication(userMedication: UserMedication) {
@@ -22,10 +20,17 @@ class MedicationStore constructor(val sharedPreferences: SharedPreferences) {
         saveMedicationList()
     }
 
-    fun saveMedicationList() {
+    private fun saveMedicationList() {
         sharedPreferences.edit()
             .putString(storeKey, gson.toJson(userMedicationList))
-            .apply()
+            .commit()
+    }
+
+    fun loadMedicationList() {
+        val listType = object : TypeToken<List<UserMedication>>() { }.type
+        val json = sharedPreferences.getString(storeKey, "[]")
+        userMedicationList = gson.fromJson(json, listType)
+
     }
 
     fun getMedicationList() : List<UserMedication> {

@@ -15,14 +15,19 @@ import com.jli.bestlife.R
 import com.jli.bestlife.domain.Drug
 import com.jli.bestlife.domain.UserMedication
 import kotlinx.android.synthetic.main.activity_medication_form.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.generic.instance
 import java.util.*
 
 
-class AddMedicationFormActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class AddMedicationFormActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, KodeinAware {
 
+    override val kodein: Kodein by closestKodein()
     lateinit var drug: Drug
 
-    lateinit var medicationStore: MedicationStore
+    private val medicationStore: MedicationStore by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +35,6 @@ class AddMedicationFormActivity : AppCompatActivity(), DatePickerDialog.OnDateSe
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         drug = intent.extras.getSerializable(DRUG_ARG) as Drug
         supportActionBar?.title = drug.brandName
-        medicationStore = MedicationStore(application.getSharedPreferences("Store", Context.MODE_PRIVATE))
 
         val spinner: Spinner = findViewById(R.id.frequency_spinner)
         ArrayAdapter.createFromResource(

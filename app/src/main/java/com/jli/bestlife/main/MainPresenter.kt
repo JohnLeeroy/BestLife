@@ -12,6 +12,7 @@ class MainPresenter(private val drugApi: DrugApiContract,
     lateinit var adapter: MedicationAdapter
 
     override fun onAttach() {
+        medicationStore.loadMedicationList()
         var medicationItemList = mutableListOf<MedicationItem>()
         var medicationlist = medicationStore.getMedicationList()
         medicationlist.forEach {
@@ -24,8 +25,6 @@ class MainPresenter(private val drugApi: DrugApiContract,
 //        adapter.getInputObservable()
 //            .subscribe({ view?.openMedicationDetailView(MedicationItem()) }, Timber::d)
     }
-
-
 
     override fun onDetach() {
 
