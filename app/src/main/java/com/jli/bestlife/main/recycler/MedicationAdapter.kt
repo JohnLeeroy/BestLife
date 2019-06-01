@@ -9,18 +9,18 @@ class MedicationAdapter : BaseAdapter<MedicationItem, MedicationSelectedEvent, M
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedicationItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.layout_drug_item_view, parent, false)
+        val view = layoutInflater.inflate(R.layout.layout_medication_item_view, parent, false)
         val viewHolder = MedicationItemViewHolder(view)
         observeViewHolderInput(viewHolder.getInputObservable())
         return viewHolder
     }
 
     override fun getItemCount(): Int {
-        return 1    //data.size
+        return data.size
     }
 
     override fun onBindViewHolder(holder: MedicationItemViewHolder, position: Int) {
-//        holder.bind(MedicationItem("Medication 1"))
+        holder.bind(data[position])
     }
 
     override fun addOrUpdateItems(items: List<MedicationItem>) {

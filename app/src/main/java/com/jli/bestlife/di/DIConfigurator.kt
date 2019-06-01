@@ -1,6 +1,8 @@
 package com.jli.bestlife.di
 
 import android.content.Context
+import android.content.SharedPreferences
+import com.jli.bestlife.MedicationStore
 import com.jli.bestlife.api.ApiConfig
 import com.jli.bestlife.api.DrugApiContract
 import com.jli.bestlife.api.OpenFDApiFactory
@@ -16,6 +18,7 @@ class DiConfigurator {
             bind<Context>() with instance(applicationContext)
             bind<ApiConfig>() with instance(apiConfig)
             bind<DrugApiContract>() with singleton { OpenFDApiFactory().make(apiConfig) }
+            bind<MedicationStore>() with singleton { MedicationStore(applicationContext.getSharedPreferences("Store", Context.MODE_PRIVATE)) }
         }
     }
 }

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">BestLife</string>
+    <string-array name="frequency_array">
+        <item>Daily</item>
+        <item>Every other day</item>
+        <item>Every 3 Days</item>
+        <item>Every 4 Days</item>
+        <item>Every 5 Days</item>
+        <item>Every 6 Days</item>
+        <item>Weekly</item>
+        <item>Bi-Weekly</item>
+    </string-array>
 </resources>

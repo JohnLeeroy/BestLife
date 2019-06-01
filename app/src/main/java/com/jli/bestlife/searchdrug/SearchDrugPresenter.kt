@@ -9,6 +9,7 @@ import com.jli.bestlife.searchdrug.recycler.SearchDrugAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
+import java.util.concurrent.TimeUnit
 
 class SearchDrugPresenter(private val api: DrugApiContract) : BasePresenter<SearchDrugView>() {
 
@@ -22,7 +23,6 @@ class SearchDrugPresenter(private val api: DrugApiContract) : BasePresenter<Sear
     private fun initSearchAdapter() {
         searchDrugAdapter = SearchDrugAdapter()
         view?.setAdapter(searchDrugAdapter)
-
         searchDrugAdapter.getInputObservable()
             .subscribe({
                 view?.goToMedicationForm(it.drug)
@@ -33,24 +33,27 @@ class SearchDrugPresenter(private val api: DrugApiContract) : BasePresenter<Sear
         val handler = Handler()
         handler.postDelayed({
             view?.getSearchViewActions()
-                ?.subscribe({
-                    when (it.type) {
-                        RxSearchViewActionEvent.SUBMIT -> {
-                            searchDrugLabel(it.text)
-                        }
-                    }
-                }, Timber::d)
+                ?.filter { it.type == RxSearchViewActionEvent.SUBMIT }
+                ?.subscribe({ searchDrugLabel(it.text) }, Timber::d)
+
+            view?.getSearchViewActions()
+                ?.filter { it.type == RxSearchViewActionEvent.QUERY_CHANGE }
+                ?.debounce(1000, TimeUnit.MILLISECONDS)
+                ?.subscribe({ searchDrugLabel(it.text) }, Timber::d)
+
         }, 1000)
     }
 
     private fun searchDrugLabel(string: String) {
         api.searchDrugLabel(string)
-            .map { DrugMapper.map(it.results.first()) }
+            .map { DrugMapper.map(it.results) }
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                Timber.d(it.toString())
-                searchDrugAdapter.addOrUpdateItems(mutableListOf(DrugItem(it)))
+                val drugItems = mutableListOf<DrugItem>()
+                it.filter { it.brandName.isNotEmpty() || it.brandName.isNotEmpty() }
+                    .forEach { drug -> drugItems.add(DrugItem(drug)) }
+                searchDrugAdapter.addOrUpdateItems(drugItems)
             }, Timber::e)
     }
 

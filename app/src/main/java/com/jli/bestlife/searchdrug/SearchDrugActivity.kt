@@ -15,7 +15,6 @@ import com.jli.bestlife.searchdrug.recycler.SearchDrugAdapter
 import io.reactivex.Observable
 import org.ups.greensky.mvp.PresenterProvider
 
-
 class SearchDrugActivity : BaseMVPActivity<SearchDrugView, SearchDrugPresenter>(), SearchDrugView {
 
     private lateinit var recyclerView: RecyclerView
@@ -51,6 +50,7 @@ class SearchDrugActivity : BaseMVPActivity<SearchDrugView, SearchDrugPresenter>(
 
     override fun goToMedicationForm(drug: Drug) {
         AddMedicationFormActivity.start(this, drug)
+        finish()
     }
 
     override fun getSearchViewActions(): Observable<RxSearchView.RxSearchActionEvent> {

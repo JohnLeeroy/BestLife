@@ -9,6 +9,7 @@ interface OpenFDAService {
 
     @GET("label.json")
     fun getUpcomingWeeklyForecast(
-        @Query("search") searchField: String
+        @Query("search") searchField: String,
+        @Query("limit") limit: Int
     ): Observable<DrugLabelResponse>
 }

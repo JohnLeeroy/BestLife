@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jli.bestlife.BestLifeApp
+import com.jli.bestlife.MedicationStore
 import com.jli.bestlife.R
 import com.jli.bestlife.medication.MedicationDetailActivity
 import com.jli.bestlife.mvp.BaseMVPActivity
@@ -16,6 +17,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.ups.greensky.mvp.PresenterProvider
 
 class MainActivity : BaseMVPActivity<MainView, MainPresenter>(), MainView {
+
+    lateinit var medicationStore: MedicationStore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

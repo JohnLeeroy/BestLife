@@ -6,7 +6,7 @@ import io.reactivex.Observable
 class OpenFDAApi(private val openFDAService: OpenFDAService) : DrugApiContract {
 
     override fun searchDrugLabel(name: String): Observable<DrugLabelResponse> {
-        return openFDAService.getUpcomingWeeklyForecast(name)
+        return openFDAService.getUpcomingWeeklyForecast(name, 20)
     }
 
 }

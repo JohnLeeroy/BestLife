@@ -9,11 +9,14 @@ import io.reactivex.Observable
 
 class DrugItemViewHolder(itemView: View) : BaseViewHolder<DrugItem, DrugSelectedEvent>(itemView) {
 
-    val drugLabel : TextView = itemView.findViewById(R.id.drug_name_label)
+    val drugLabel: TextView = itemView.findViewById(R.id.drug_name_label)
 
     override fun bind(model: DrugItem) {
         super.bind(model)
-        drugLabel.text = model.drug.brandName
+        val name = if (model.drug.brandName.isEmpty()) model.drug.genericName else model.drug.brandName
+        drugLabel.text = name
+            .plus(" - ")
+            .plus(model.drug.manufacturer)
     }
 
     override fun getInputObservable(): Observable<DrugSelectedEvent> {

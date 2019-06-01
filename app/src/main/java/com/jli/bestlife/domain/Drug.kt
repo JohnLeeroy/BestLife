@@ -4,6 +4,7 @@ import java.io.Serializable
 
 data class Drug(val brandName: String,
                 val genericName: String,
+                val manufacturer: String,
                 val effectiveTime: Long,
                 val activeIngredient: String,
                 val askDoctorWarning: String,
