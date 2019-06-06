@@ -10,7 +10,7 @@ Team 5 - "A Team" Members
 [Download the BestLife apk](https://drive.google.com/open?id=1p6MMasrUmPMDISzOST1lhzkPj22Nd36Q)
 
 ## Setup
-In the project's local.properties, add in the OpenFDA Api key in the format of apiKey="DARK_SKY_API_KEY"
+In the project's local.properties, add in the OpenFDA Api key in the format of apiKey="OPEN_FDA_KEY"
 
 ## Screenshots
 
